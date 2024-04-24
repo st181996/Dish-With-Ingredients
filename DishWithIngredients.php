@@ -7,6 +7,8 @@ error_reporting(E_ALL);
 /*require "ingredientsClass.php";*/
 require "Spl-autoloader.php";
 
+echo "Today is " . date("Y/m/d") . "<br>";
+
 $ingredientA = new Ingredients("rice","banana","apple","sugar");
 $ingredientB = new Ingredients("salt","oil","onion","tomato");
 $ingredientC = new Ingredients("chilli","cheese","egg","flour");
@@ -49,7 +51,7 @@ $dishes = array(
                         </div>
                     </td>
                     <td><?php echo $dish->getIngredients()->getIngredientone() . ", " . $dish->getIngredients()->getIngredienttwo() . ", " . $dish->getIngredients()->getIngredientthree() . ", " . $dish->getIngredients()->getIngredientfour(); ?></td>
-                </tr> 
+                </tr>
                 <!-- echo $dish->getDishName() ."<br>" ." colour: " . $dish->getColour() . ", price : " . $dish->getPrice() . ", " . $dish->getIngredientA()->getIngredientone() . ", " . $dish->getIngredientA()->getIngredienttwo() . ", " . $dish->getIngredientA()->getIngredientthree() . ", " . $dish->getIngredientA()->getIngredientfour() . "<br>";-->
             <?php 
             }

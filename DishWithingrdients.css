@@ -1,6 +1,6 @@
 .price {
-    color: green;
-    border: 2px solid black;
+    color: red;
+    /*border: 2px solid black;*/
     margin: 20px;
     padding: 20px;
 }
@@ -33,7 +33,7 @@ h1 {
         
 td:first-child {
     color: blue;
-    background-color: lightblue;
+    /*background-color: lightblue;*/
 }
         
 td:nth-child(2) {
@@ -43,10 +43,21 @@ td:nth-child(2) {
 div {
     width: 100px;
     height: 100px;
-    background: pink;
+    background: #fbe4ff;
     transition: width 2s;
 }            
 
 div:hover {
     width: 300px;
+}
+
+table tr {
+    transition: background-color 2.1s ease;
+}
+
+tr:hover {
+    width: 100px;
+    height: 100px;
+    background: #ffd8be;
+    /*transition: width 2s;*/
 }
