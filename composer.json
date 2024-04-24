@@ -1,0 +1,11 @@
+{
+    "name": "dish/composerfile",
+    "description": "composer jason file",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Dish\\Composerfile\\": "src/"
+        }
+    },
+    "require": {}
+}
