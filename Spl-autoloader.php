@@ -1,5 +1,6 @@
 <?php
 
 spl_autoload_register(function ($className) {
-    require $className . '.php'; 
+    $path = './src/';
+    include $path.$className . '.php'; 
 });
