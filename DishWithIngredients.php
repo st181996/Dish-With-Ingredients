@@ -3,8 +3,17 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require "Dish.php";
+/*require "Dish.php";*/
 require "ingredientsClass.php";
+
+spl_autoload_register('myAutoloader');
+
+function myAutoloader($TestAutoloader)
+{
+    $path = '';
+
+    include $TestAutoloader.'.php';
+}
 
 $ingredientA = new Ingredients("rice","banana","apple","sugar");
 $ingredientB = new Ingredients("salt","oil","onion","tomato");
