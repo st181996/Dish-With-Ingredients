@@ -1,0 +1,52 @@
+.price {
+    color: green;
+    border: 2px solid black;
+    margin: 20px;
+    padding: 20px;
+}
+
+table, 
+th {
+    color: pink;
+    font-family: verdana;
+    font-size: 150%;
+    border:1px solid red;
+    padding: 20px;
+}
+         
+td {
+    color: purple;
+    font-family: verdana;
+    font-size: 120%;
+    border:1px solid powderblue;
+    padding: 20px;
+}
+
+h1 {
+    color: orange;
+    font-family: "PT Sans", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 250%;
+    padding: 30px;
+}
+        
+td:first-child {
+    color: blue;
+    background-color: lightblue;
+}
+        
+td:nth-child(2) {
+    color: lightblue;
+}
+    
+div {
+    width: 100px;
+    height: 100px;
+    background: pink;
+    transition: width 2s;
+}            
+
+div:hover {
+    width: 300px;
+}
