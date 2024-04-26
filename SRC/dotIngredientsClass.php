@@ -3,7 +3,7 @@
 class Ingredients
 {
     /**
-     * @var array<int, string>
+     * @var array<int|string, string>
      */
     private array $ingredients;
     
@@ -14,7 +14,7 @@ class Ingredients
     }
     
     /**
-     * @return array<int, string>
+     * @return array<int|string, string>
      */
     public function getIngredients(): array
     {

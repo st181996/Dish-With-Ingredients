@@ -5,18 +5,17 @@ namespace App;
 class Ingredients
 {
     /**
-     * @var array<int, string>
+     * @var array<int|string, string>
      */
     private array $ingredients;
     
     public function __construct(string ...$ingredients)
     {
         $this->ingredients = $ingredients;
-       
     }
     
     /**
-     * @return array<int, string>
+     * @return array<int|string, string>
      */
     public function getIngredients(): array
     {
