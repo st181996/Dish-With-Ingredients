@@ -8,7 +8,6 @@
         }
     },
     "require": {
-        "phpmailer/phpmailer": "^6.9",
         "bitandblack/sentence-construction": "^2.0"
     }
 }

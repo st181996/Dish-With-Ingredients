@@ -55,13 +55,12 @@ $dishes = array(
                     <td>
                         <?php 
                     
-                        $sentence = new SentenceConstruction(
-                            " , " , 
+                           echo new SentenceConstruction(
+                            ", " , 
                             " and " , 
                             $dish->getIngredients()->getIngredients()
                         ); 
-                        
-                        echo $sentence; 
+                          
                         
                         ?>
                         
