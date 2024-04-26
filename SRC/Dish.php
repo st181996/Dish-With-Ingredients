@@ -1,5 +1,7 @@
 <?php
 
+namespace App;
+
 class Dish 
 {
     private bool $colour;

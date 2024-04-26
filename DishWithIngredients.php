@@ -3,9 +3,10 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-/*require "Dish.php";*/
-/*require "ingredientsClass.php";*/
-require "Spl-autoloader.php";
+use App\Dish;
+use App\Ingredients;
+
+require "vendor/autoload.php";
 
 echo "Today is " . date("Y/m/d") . "<br>";
 

@@ -1,5 +1,7 @@
 <?php
 
+namespace App;
+
 class Ingredients
 {
     private string $ingredientone;
