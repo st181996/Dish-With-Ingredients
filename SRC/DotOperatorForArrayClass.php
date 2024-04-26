@@ -18,14 +18,14 @@ class Dish
         $this->ingredients = $ingredients;
     }
     
-    public function setColour(bool $colour)
+    public function setColour(bool $colour): void
     {
     	$this->colour = $colour;
     }
     
-     public function setIngredients(Ingredients $ingredients)
+     public function setIngredients(Ingredients $ingredients): void
     {
-    	$this->colour = $ingredients;
+    	$this->ingredients = $ingredients;
     }
     
     public function getColour(): bool

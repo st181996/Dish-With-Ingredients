@@ -20,7 +20,7 @@ class Dish
         $this->ingredients = $ingredients;
     }
     
-    public function setColour(bool $colour)
+    public function setColour(bool $colour): void
     {
     	$this->colour = $colour;
     }
