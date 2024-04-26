@@ -4,40 +4,17 @@ namespace App;
 
 class Ingredients
 {
-    private string $ingredientone;
+    private array $ingredients;
     
-    private string $ingredienttwo;
-    
-    private string $ingredientthree;
-    
-    private string $ingredientfour;
-    
-    public function __construct(string $ingredientone, string $ingredienttwo, string $ingredientthree, string $ingredientfour)
+    public function __construct(string ...$ingredients)
     {
-        $this->ingredientone = $ingredientone;
-        $this->ingredienttwo = $ingredienttwo;
-        $this->ingredientthree = $ingredientthree;
-        $this->ingredientfour = $ingredientfour;
+        $this->ingredients = $ingredients;
+       
     }
     
-    public function getIngredientone(): string
+    public function getIngredients(): array
     {
-        return $this->ingredientone;
-    } 
-    
-    public function getIngredienttwo(): string
-    {
-        return $this->ingredienttwo;
-    } 
-    
-    public function getIngredientthree(): string
-    {
-        return $this->ingredientthree;
-    } 
-    
-    public function getIngredientfour(): string
-    {
-        return $this->ingredientfour;
+        return $this->ingredients;
     } 
     
 }

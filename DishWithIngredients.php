@@ -5,6 +5,7 @@ error_reporting(E_ALL);
 
 use App\Dish;
 use App\Ingredients;
+use BitAndBlack\SentenceConstruction;
 
 require "vendor/autoload.php";
 
@@ -40,7 +41,7 @@ $dishes = array(
             <?php
 
             foreach ($dishes as $dish) { 
-
+            
             ?>
                 <tr>
                     <td><?php echo $dish->getDishName(); ?></td>
@@ -51,9 +52,21 @@ $dishes = array(
                             <?php echo $dish->getPrice(); ?>
                         </div>
                     </td>
-                    <td><?php echo $dish->getIngredients()->getIngredientone() . ", " . $dish->getIngredients()->getIngredienttwo() . ", " . $dish->getIngredients()->getIngredientthree() . ", " . $dish->getIngredients()->getIngredientfour(); ?></td>
+                    <td>
+                        <?php 
+                    
+                        $sentence = new SentenceConstruction(
+                            " , " , 
+                            " and " , 
+                            $dish->getIngredients()->getIngredients()
+                        ); 
+                        
+                        echo $sentence; 
+                        
+                        ?>
+                        
+                    </td>
                 </tr>
-                <!-- echo $dish->getDishName() ."<br>" ." colour: " . $dish->getColour() . ", price : " . $dish->getPrice() . ", " . $dish->getIngredientA()->getIngredientone() . ", " . $dish->getIngredientA()->getIngredienttwo() . ", " . $dish->getIngredientA()->getIngredientthree() . ", " . $dish->getIngredientA()->getIngredientfour() . "<br>";-->
             <?php 
             }
             ?>

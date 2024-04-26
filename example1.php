@@ -4,7 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require "Dish.php";
-require "ingredientsClass.php";
+require "IngredientsClass.php";
 
 $ingredientA = new Ingredients("rice","banana","apple","sugar");
 						
