@@ -11,14 +11,14 @@ require "vendor/autoload.php";
 
 echo "Today is " . date("Y/m/d") . "<br>";
 
-$ingredientA = new Ingredients("rice","banana","apple","sugar");
-$ingredientB = new Ingredients("salt","oil","onion","tomato");
-$ingredientC = new Ingredients("chilli","cheese","egg","flour");
+$ingredientA = new Ingredients("Spaghetti Pasta","Eggs","Pancetta","Parmesan Cheese","Blck Pepper","Olive Oil","Garlic","Parsley for garnish");
+$ingredientB = new Ingredients("Chicken Breast","Soy Sauce","Garlic","Ginger","Onion","Sesame Oil","Cornstarch","Chilli","Rice for serving");
+$ingredientC = new Ingredients("Fresh Tomatoes","Fresh Mozzarella Cheese","Fresh Basel Leaves","Balsamic Vinegar","Extra Virgin Olive Oil","Salt","Pepper");
 
 $dishes = array(
-     new Dish("dishone","blue", 7, $ingredientA),
-     new Dish("dishtwo","false", 5.2, $ingredientB),
-     new Dish("dishthree","true", 6, $ingredientC),
+     new Dish("Spaghetti Carbonara","Deep Red", 7, $ingredientA),
+     new Dish("Chicken Stir-Fry","Rich Yellow", 5.2, $ingredientB),
+     new Dish("Caprese Salad","Green and White", 6, $ingredientC),
 );
 ?><!DOCTYPE html>
 <html lang="en">
@@ -39,9 +39,9 @@ $dishes = array(
                 <th>Dish Ingredients</th>
             </tr>
             <?php
-
+           
             foreach ($dishes as $dish) { 
-            
+                
             ?>
                 <tr>
                     <td><?php echo $dish->getDishName(); ?></td>
@@ -55,13 +55,13 @@ $dishes = array(
                     <td>
                         <?php 
                     
-                           echo new SentenceConstruction(
+                        echo new SentenceConstruction(
                             ", " , 
                             " and " , 
                             $dish->getIngredients()->getIngredients()
                         ); 
-                          
-                        
+                            echo "<br>" . "Is the Dish Spicy :" . ($dish->isSpicy() ? "Yes" : "No");
+                              
                         ?>
                         
                     </td>

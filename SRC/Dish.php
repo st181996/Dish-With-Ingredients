@@ -4,15 +4,15 @@ namespace App;
 
 class Dish 
 {
-    private bool $colour;
+    private string $colour;
     
     private float $price;
     
     private string $dishname;
     
     private Ingredients $ingredients;
-    
-    public function __construct(string $dishname, bool $colour, float $price, Ingredients $ingredients)
+   
+    public function __construct(string $dishname, string $colour, float $price, Ingredients $ingredients)
     {
         $this->colour = $colour;
         $this->price = $price;
@@ -20,12 +20,12 @@ class Dish
         $this->ingredients = $ingredients;
     }
     
-    public function setColour(bool $colour): void
+    public function setColour(string $colour): void
     {
     	$this->colour = $colour;
     }
     
-    public function getColour(): bool
+    public function getColour(): string
     {
         return $this->colour;
     }  
@@ -43,6 +43,11 @@ class Dish
     public function getIngredients(): Ingredients
     {
         return $this->ingredients;
+    }
+    
+    public function isSpicy()
+    {
+        return in_array("Chilli", $this->ingredients->getIngredients());
     }
     
 }
