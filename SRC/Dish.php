@@ -45,7 +45,7 @@ class Dish
         return $this->ingredients;
     }
     
-    public function isSpicy()
+    public function isSpicy(): bool
     {
         return in_array("Chilli", $this->ingredients->getIngredients());
     }
