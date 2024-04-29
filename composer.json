@@ -7,11 +7,18 @@
             "App\\": "src/"
         }
     },
+    
+    "autoload-dev": {
+        "psr-4": {
+            "App\\": "tests/"
+        }
+    },
     "require": {
         "bitandblack/sentence-construction": "^2.0"
     },
     "require-dev": {
-        "phpstan/phpstan": "^1.10"
+        "phpstan/phpstan": "^1.10",
+        "phpunit/phpunit": "^11.1"
     },
     "scripts": {
         "phpstan": "php vendor/bin/phpstan analyse --configuration ./phpstan.neon --memory-limit=-1 --ansi",
@@ -24,4 +31,3 @@
         "refactor": "Runs tools to refactor the code."
     }
 }
-
