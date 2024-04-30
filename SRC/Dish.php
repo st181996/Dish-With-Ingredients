@@ -46,11 +46,26 @@ class Dish
         return $this->ingredients;
     }
     
+    /*public function isSpicy(): bool
+    {
+        return in_array(
+            "Chilli", 
+            $this->ingredients->getIngredients()
+        );
+    }*/
+    
     public function isSpicy(): bool
     {
-        return in_array("Chilli", $this->ingredients->getIngredients());
+        $ingredientList = $this->ingredients->getIngredients();
+        
+        foreach ($ingredientList as $ingredient) {
+        
+            if (stripos($ingredient, "Chilli") !== false) {
+                return true;
+            }
+        }
+        return false;
     }
-    
 }
 
 
