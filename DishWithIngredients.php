@@ -5,13 +5,14 @@ error_reporting(E_ALL);
 
 use App\Dish;
 use App\Ingredients;
+use App\MysqlDishloader;
 use BitAndBlack\SentenceConstruction;
 
 require "vendor/autoload.php";
 
 echo "Today is " . date("Y/m/d") . "<br>";
 
-$ingredientA = new Ingredients("Spaghetti Pasta","Eggs","Pancetta","Parmesan Cheese","Blck Pepper","Olive Oil","Garlic","Parsley for garnish");
+/*$ingredientA = new Ingredients("Spaghetti Pasta","Eggs","Pancetta","Parmesan Cheese","Blck Pepper","Olive Oil","Garlic","Parsley for garnish");
 $ingredientB = new Ingredients("Chicken Breast","Soy Sauce","Garlic","Ginger","Onion","Sesame Oil","Cornstarch","Chilli","Rice for serving");
 $ingredientC = new Ingredients("Fresh Tomatoes","Fresh Mozzarella Cheese","Fresh Basel Leaves","Balsamic Vinegar","Extra Virgin Olive Oil","Salt","Pepper");
 
@@ -19,7 +20,12 @@ $dishes = array(
      new Dish("Spaghetti Carbonara","Deep Red", 7, $ingredientA),
      new Dish("Chicken Stir-Fry","Rich Yellow", 5.2, $ingredientB),
      new Dish("Caprese Salad","Green and White", 6, $ingredientC),
-);
+);*/
+
+$dishSelect = new MysqlDishloader();
+$dishes = $dishSelect->getDataFromTable();
+
+
 ?><!DOCTYPE html>
 <html lang="en">
     <head>
@@ -39,7 +45,7 @@ $dishes = array(
                 <th>Dish Ingredients</th>
             </tr>
             <?php
-           
+            
             foreach ($dishes as $dish) { 
                 
             ?>
@@ -72,3 +78,4 @@ $dishes = array(
         </table>
     </body>
 </html>
+<?php
