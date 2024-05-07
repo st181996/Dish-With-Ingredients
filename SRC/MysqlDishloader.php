@@ -6,13 +6,10 @@ namespace App;
     
 class MysqlDishloader
 {
-    public $db_host = 'localhost';
-    public $db_user = 'root';
-    public $db_password = 'root';
-    public $db_db = "Database for Dish";
-    private $stmt;
-    private $result;
-    private $dishes;
+    public string $db_host = 'localhost';
+    public string $db_user = 'root';
+    public string $db_password = 'root';
+    public string $db_db = "Database for Dish";
     private \mysqli $conn;
     
     public function __construct()
@@ -37,11 +34,22 @@ class MysqlDishloader
         $this->conn = $conn;
     }
     
+    /**
+     * @return array<int, Dish>
+     */
     public function getDataFromTable(): array
     {
         $stmt = $this->conn->prepare("SELECT dishname, dishcolour, dishprice, dishingredients FROM Dish");
+        if ($stmt === false) {
+            echo 'Error: ';
+            exit();  
+        }
         $stmt->execute();
         $result = $stmt->get_result();
+        if ($result === false) {
+            echo 'Error: ';
+            exit();  
+        }
 
         $dishes = [];
         
@@ -50,7 +58,7 @@ class MysqlDishloader
             $ingredients = explode(', ', $ingredients);
 			$ingredients = new Ingredients(...$ingredients);
             
-            $dish = new Dish($row['dishname'], $row['dishcolour'], $row['dishprice'], $ingredients);
+            $dish = new Dish($row['dishname'], $row['dishcolour'], (float) $row['dishprice'], $ingredients);
             $dishes[] = $dish;
             
         }
