@@ -6,10 +6,10 @@ namespace App;
     
 class MysqlDishloader
 {
-    public string $db_host = 'localhost';
-    public string $db_user = 'root';
-    public string $db_password = 'root';
-    public string $db_db = "Database for Dish";
+    private string $db_host = 'localhost';
+    private string $db_user = 'root';
+    private string $db_password = 'root';
+    private string $db_db = "Database for Dish";
     private \mysqli $conn;
     
     public function __construct()
@@ -39,19 +39,17 @@ class MysqlDishloader
      */
     public function getDataFromTable(): array
     {
+        $dishes = [];
+        
         $stmt = $this->conn->prepare("SELECT dishname, dishcolour, dishprice, dishingredients FROM Dish");
         if ($stmt === false) {
-            echo 'Error: ';
-            exit();  
+            return $dishes;   
         }
         $stmt->execute();
         $result = $stmt->get_result();
         if ($result === false) {
-            echo 'Error: ';
-            exit();  
+            return $dishes;  
         }
-
-        $dishes = [];
         
         while ($row = $result->fetch_assoc()) {            
             $ingredients = $row['dishingredients'];
