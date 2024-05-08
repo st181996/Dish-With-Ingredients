@@ -14,7 +14,8 @@
         }
     },
     "require": {
-        "bitandblack/sentence-construction": "^2.0"
+        "bitandblack/sentence-construction": "^2.0",
+        "symfony/dotenv": "^7.0"
     },
     "require-dev": {
         "phpstan/phpstan": "^1.10",

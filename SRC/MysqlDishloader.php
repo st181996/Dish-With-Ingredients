@@ -6,19 +6,15 @@ namespace App;
     
 class MysqlDishloader
 {
-    private string $db_host = 'localhost';
-    private string $db_user = 'root';
-    private string $db_password = 'root';
-    private string $db_db = "Database for Dish";
     private \mysqli $conn;
     
-    public function __construct()
+    public function __construct(string $db_host, string $db_user, string $db_password, string $db_db)
     {
         $conn = new \mysqli(
-            $this->db_host,
-            $this->db_user,
-            $this->db_password,
-            $this->db_db
+            $db_host,
+            $db_user,
+            $db_password,
+            $db_db
         );
         if ($conn->connect_error) {
             echo 'Error: '.$conn->connect_error;

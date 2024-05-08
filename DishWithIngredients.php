@@ -7,8 +7,12 @@ use App\Dish;
 use App\Ingredients;
 use App\MysqlDishloader;
 use BitAndBlack\SentenceConstruction;
+use Symfony\Component\Dotenv\Dotenv;
 
 require "vendor/autoload.php";
+
+$dotenv = new Dotenv();
+$dotenv->load(__DIR__.'/.env');
 
 echo "Today is " . date("Y/m/d") . "<br>";
 
@@ -22,7 +26,11 @@ $dishes = array(
      new Dish("Caprese Salad","Green and White", 6, $ingredientC),
 );*/
 
-$dishSelect = new MysqlDishloader();
+var_dump($_ENV["DB_HOST"]);
+var_dump($_ENV["DB_USER"]);
+var_dump($_ENV["DB_PASSWORD"]);
+var_dump($_ENV["DB_DB"]);
+$dishSelect = new MysqlDishloader($_ENV["DB_HOST"], $_ENV["DB_USER"], $_ENV["DB_PASSWORD"], $_ENV["DB_DB"]);
 $dishes = $dishSelect->getDataFromTable();
 
 
