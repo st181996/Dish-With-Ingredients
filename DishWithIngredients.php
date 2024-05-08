@@ -26,13 +26,12 @@ $dishes = array(
      new Dish("Caprese Salad","Green and White", 6, $ingredientC),
 );*/
 
-var_dump($_ENV["DB_HOST"]);
-var_dump($_ENV["DB_USER"]);
-var_dump($_ENV["DB_PASSWORD"]);
-var_dump($_ENV["DB_DB"]);
+
 $dishSelect = new MysqlDishloader($_ENV["DB_HOST"], $_ENV["DB_USER"], $_ENV["DB_PASSWORD"], $_ENV["DB_DB"]);
 $dishes = $dishSelect->getDataFromTable();
 
+// Code to get just the spicy dishes
+//$dishes = $dishSelect->getSpicyDishOnly();
 
 ?><!DOCTYPE html>
 <html lang="en">

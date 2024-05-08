@@ -51,13 +51,30 @@ class MysqlDishloader
             $ingredients = $row['dishingredients'];
             $ingredients = explode(', ', $ingredients);
 			$ingredients = new Ingredients(...$ingredients);
-            
+			
             $dish = new Dish($row['dishname'], $row['dishcolour'], (float) $row['dishprice'], $ingredients);
             $dishes[] = $dish;
             
         }
         return $dishes;
-    }  
+    } 
+    
+    /**
+     * @return array<int, Dish>
+     */
+    public function getSpicyDishOnly(): array 
+    {
+        
+        $dishes = $this->getDataFromTable();
+        foreach ($dishes as $dish) {
+            if ($dish->isSpicy()) {
+                $dishes = [];
+                $dishes[] = $dish;
+            
+            }
+        }
+        return $dishes;
+    }
 }
 
 
