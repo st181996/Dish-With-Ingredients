@@ -31,8 +31,8 @@ class MysqlDishloader
     }
     
      /**
-     * @return array<int, Dish>
-     */
+      * @return array<int, Dish>
+      */
      public function getDataFromTable(): array
      {
          $query = "SELECT dishname, dishcolour, dishprice, dishingredients FROM Dish";
@@ -41,9 +41,9 @@ class MysqlDishloader
      }
      
      /**
-     * @return array<int, Dish>
-     */
-     public function getdataConnection($query): array
+      * @return array<int, Dish>
+      */
+     public function getdataConnection(string $query): array
      {
          $dishes = [];
          $stmt = $this->conn->prepare($query);
@@ -67,6 +67,7 @@ class MysqlDishloader
          }
          return $dishes;
      }
+     
     /**
      * @return array<int, Dish>
      */
