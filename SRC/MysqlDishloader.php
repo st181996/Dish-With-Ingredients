@@ -33,11 +33,37 @@ class MysqlDishloader
     /**
      * @return array<int, Dish>
      */
+   //  public function getDataFromTable(): array
+//     {
+//         $dishes = [];
+//         
+//         $stmt = $this->conn->prepare("SELECT dishname, dishcolour, dishprice, dishingredients FROM Dish");
+//         if ($stmt === false) {
+//             return $dishes;   
+//         }
+//         $stmt->execute();
+//         $result = $stmt->get_result();
+//         if ($result === false) {
+//             return $dishes;  
+//         }
+//         
+//         while ($row = $result->fetch_assoc()) {            
+//             $ingredients = $row['dishingredients'];
+//             $ingredients = explode(', ', $ingredients);
+// 			$ingredients = new Ingredients(...$ingredients);
+// 			
+//             $dish = new Dish($row['dishname'], $row['dishcolour'], (float) $row['dishprice'], $ingredients);
+//             $dishes[] = $dish;
+//             
+//         }
+//         return $dishes;
+//     }
+    
     public function getDataFromTable(): array
     {
         $dishes = [];
         
-        $stmt = $this->conn->prepare("SELECT dishname, dishcolour, dishprice, dishingredients FROM Dish");
+        $stmt = $this->conn->prepare("SELECT dishname, dishcolour, dishprice, dishingredients FROM Dish WHERE dishingredients LIKE '%Chilli%'");
         if ($stmt === false) {
             return $dishes;   
         }
