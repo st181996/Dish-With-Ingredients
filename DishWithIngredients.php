@@ -28,10 +28,10 @@ $dishes = array(
 
 
 $dishSelect = new MysqlDishloader($_ENV["DB_HOST"], $_ENV["DB_USER"], $_ENV["DB_PASSWORD"], $_ENV["DB_DB"]);
-$dishes = $dishSelect->getDataFromTable();
+//$dishes = $dishSelect->getDataFromTable();
 
 // Code to get just the spicy dishes
-//$dishes = $dishSelect->getSpicyDishOnly();
+$dishes = $dishSelect->getSpicyDishOnly();
 
 ?><!DOCTYPE html>
 <html lang="en">

@@ -64,15 +64,21 @@ class MysqlDishloader
      */
     public function getSpicyDishOnly(): array 
     {
-        
         $dishes = $this->getDataFromTable();
+        $dishes = array_filter(
+            $dishes, 
+            function($dish) {
+                return $dish->isSpicy();
+            }
+        );
+        
+        /* $dishes = $this->getDataFromTable();
         foreach ($dishes as $dish) {
             if ($dish->isSpicy()) {
                 $dishes = [];
                 $dishes[] = $dish;
-            
             }
-        }
+        }*/
         return $dishes;
     }
 }
