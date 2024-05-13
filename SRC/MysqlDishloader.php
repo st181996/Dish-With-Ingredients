@@ -30,59 +30,50 @@ class MysqlDishloader
         $this->conn = $conn;
     }
     
+     /**
+     * @return array<int, Dish>
+     */
+     public function getDataFromTable(): array
+     {
+         $query = "SELECT dishname, dishcolour, dishprice, dishingredients FROM Dish";
+         return $this->getDataConnection($query);
+         
+     }
+     
+     /**
+     * @return array<int, Dish>
+     */
+     public function getdataConnection($query): array
+     {
+         $dishes = [];
+         $stmt = $this->conn->prepare($query);
+         if ($stmt === false) {
+             return $dishes;   
+         }
+         $stmt->execute();
+         $result = $stmt->get_result();
+         if ($result === false) {
+             return $dishes;  
+         }
+         
+         while ($row = $result->fetch_assoc()) {            
+             $ingredients = $row['dishingredients'];
+             $ingredients = explode(', ', $ingredients);
+ 			 $ingredients = new Ingredients(...$ingredients);
+ 			
+             $dish = new Dish($row['dishname'], $row['dishcolour'], (float) $row['dishprice'], $ingredients);
+             $dishes[] = $dish;
+             
+         }
+         return $dishes;
+     }
     /**
      * @return array<int, Dish>
      */
-   //  public function getDataFromTable(): array
-//     {
-//         $dishes = [];
-//         
-//         $stmt = $this->conn->prepare("SELECT dishname, dishcolour, dishprice, dishingredients FROM Dish");
-//         if ($stmt === false) {
-//             return $dishes;   
-//         }
-//         $stmt->execute();
-//         $result = $stmt->get_result();
-//         if ($result === false) {
-//             return $dishes;  
-//         }
-//         
-//         while ($row = $result->fetch_assoc()) {            
-//             $ingredients = $row['dishingredients'];
-//             $ingredients = explode(', ', $ingredients);
-// 			$ingredients = new Ingredients(...$ingredients);
-// 			
-//             $dish = new Dish($row['dishname'], $row['dishcolour'], (float) $row['dishprice'], $ingredients);
-//             $dishes[] = $dish;
-//             
-//         }
-//         return $dishes;
-//     }
-    
-    public function getDataFromTable(): array
+    public function getDataFromTableWithKeyword(): array
     {
-        $dishes = [];
-        
-        $stmt = $this->conn->prepare("SELECT dishname, dishcolour, dishprice, dishingredients FROM Dish WHERE dishingredients LIKE '%Chilli%'");
-        if ($stmt === false) {
-            return $dishes;   
-        }
-        $stmt->execute();
-        $result = $stmt->get_result();
-        if ($result === false) {
-            return $dishes;  
-        }
-        
-        while ($row = $result->fetch_assoc()) {            
-            $ingredients = $row['dishingredients'];
-            $ingredients = explode(', ', $ingredients);
-			$ingredients = new Ingredients(...$ingredients);
-			
-            $dish = new Dish($row['dishname'], $row['dishcolour'], (float) $row['dishprice'], $ingredients);
-            $dishes[] = $dish;
-            
-        }
-        return $dishes;
+        $query = "SELECT dishname, dishcolour, dishprice, dishingredients FROM Dish WHERE dishingredients LIKE '%Chilli%'";
+        return $this->getDataConnection($query);
     } 
     
     /**
