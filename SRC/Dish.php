@@ -5,6 +5,8 @@ namespace App;
 
 class Dish 
 {
+    private int $dish_id;
+    
     private string $colour;
     
     private float $price;
@@ -13,8 +15,9 @@ class Dish
     
     private Ingredients $ingredients;
    
-    public function __construct(string $dishname, string $colour, float $price, Ingredients $ingredients)
+    public function __construct(int $dish_id, string $dishname, string $colour, float $price, Ingredients $ingredients)
     {
+        $this->dish_id = $dish_id;
         $this->colour = $colour;
         $this->price = $price;
         $this->dishname = $dishname;
@@ -24,6 +27,11 @@ class Dish
     public function setColour(string $colour): void
     {
     	$this->colour = $colour;
+    }
+    
+    public function getDishId(): int
+    {
+        return $this->dish_id;
     }
     
     public function getColour(): string

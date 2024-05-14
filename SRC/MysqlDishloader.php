@@ -35,7 +35,7 @@ class MysqlDishloader
       */
      public function getDataFromTable(): array
      {
-         $query = "SELECT dishname, dishcolour, dishprice, dishingredients FROM Dish";
+         $query = "SELECT id, dishname, dishcolour, dishprice, dishingredients FROM Dish";
          return $this->getDataConnection($query);
          
      }
@@ -61,7 +61,7 @@ class MysqlDishloader
              $ingredients = explode(', ', $ingredients);
  			 $ingredients = new Ingredients(...$ingredients);
  			
-             $dish = new Dish($row['dishname'], $row['dishcolour'], (float) $row['dishprice'], $ingredients);
+             $dish = new Dish($row['id'], $row['dishname'], $row['dishcolour'], (float) $row['dishprice'], $ingredients);
              $dishes[] = $dish;
              
          }
@@ -73,7 +73,7 @@ class MysqlDishloader
      */
     public function getDataFromTableWithKeyword(): array
     {
-        $query = "SELECT dishname, dishcolour, dishprice, dishingredients FROM Dish WHERE dishingredients LIKE '%Chilli%'";
+        $query = "SELECT id, dishname, dishcolour, dishprice, dishingredients FROM Dish WHERE dishingredients LIKE '%Chilli%'";
         return $this->getDataConnection($query);
     } 
     

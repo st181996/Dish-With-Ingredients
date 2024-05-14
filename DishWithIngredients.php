@@ -47,10 +47,12 @@ $dishes = $dishSelect->getDataFromTable();
         <h1>Table For Restaurant</h1>
         <table>
             <tr>
+                <th>Dish Id</th>
                 <th>Dish Name</th>
                 <th>Dish Colour</th>
                 <th>Dish Price</th>
                 <th>Dish Ingredients</th>
+                <th>likes</th>
             </tr>
             <?php
             
@@ -58,6 +60,7 @@ $dishes = $dishSelect->getDataFromTable();
                 
             ?>
                 <tr>
+                    <td><?php echo $dish->getDishId(); ?></td>
                     <td><?php echo $dish->getDishName(); ?></td>
                     <td><?php echo $dish->getColour(); ?></td>
                     <!--<td><?php echo $dish->getPrice(); ?></td>-->
@@ -77,7 +80,13 @@ $dishes = $dishSelect->getDataFromTable();
                             echo "<br>" . "Is the Dish Spicy :" . ($dish->isSpicy() ? "Yes" : "No");
                               
                         ?>
-                        
+                    </td>
+                    <td>
+                        <form action="likes.php" method="POST">
+                            <input type="hidden" name="dish_id" value="<?php echo $dish->getDishId(); ?>">
+                            <!--<input type="hidden" name="likes" value="<?php echo $dish->getLikes(); ?>">-->
+                            <button type="submit">Like</button>
+                        </form>
                     </td>
                 </tr>
             <?php 
