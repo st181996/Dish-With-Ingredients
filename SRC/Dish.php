@@ -15,9 +15,9 @@ class Dish
     
     private Ingredients $ingredients;
     
-    private $likesData;
+    private mixed $likesData;
    
-    public function __construct(int $dish_id, string $dishname, string $colour, float $price, Ingredients $ingredients, $likesData)
+    public function __construct(int $dish_id, string $dishname, string $colour, float $price, Ingredients $ingredients, mixed $likesData)
     {
         $this->dish_id = $dish_id;
         $this->colour = $colour;
@@ -57,7 +57,7 @@ class Dish
         return $this->ingredients;
     }
     
-    public function getLikes()
+    public function getLikes(): mixed
     {
         return $this->likesData;
     }

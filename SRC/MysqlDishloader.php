@@ -62,20 +62,26 @@ class MysqlDishloader
  			 $ingredients = new Ingredients(...$ingredients);
  			 
  			 $jsonFilePath = "Dishes.json";
-             $jsonData = file_get_contents($jsonFilePath);       
-             $likesData = json_decode($jsonData, true);
+             $jsonData = file_get_contents($jsonFilePath); 
+             $likesData = [];
+             if ($jsonData !== false) {  
+                 $likesData = json_decode($jsonData, true);
+             }
+             if (is_array($likesData) !== true) {
+                 $likesData = [];
+             }
              
              $dishID = $row['id'];
              $dishlikes = 0;
              
-             foreach ($likesData as $likesID => $currentlikes) {
+             foreach ((array) $likesData as $likesID => $currentlikes) {
                  if ($likesID == $dishID) {
                      $dishlikes = $currentlikes;
                      break;
                  }
              }
              
-             $dish = new Dish($dishID, $row['dishname'], $row['dishcolour'], (float) $row['dishprice'], $ingredients, $dishlikes);
+             $dish = new Dish((int) $dishID, $row['dishname'], $row['dishcolour'], (float) $row['dishprice'], $ingredients, $dishlikes);
              $dishes[] = $dish;
              
          }
