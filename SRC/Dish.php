@@ -14,14 +14,17 @@ class Dish
     private string $dishname;
     
     private Ingredients $ingredients;
+    
+    private $likesData;
    
-    public function __construct(int $dish_id, string $dishname, string $colour, float $price, Ingredients $ingredients)
+    public function __construct(int $dish_id, string $dishname, string $colour, float $price, Ingredients $ingredients, $likesData)
     {
         $this->dish_id = $dish_id;
         $this->colour = $colour;
         $this->price = $price;
         $this->dishname = $dishname;
         $this->ingredients = $ingredients;
+        $this->likesData = $likesData;
     }
     
     public function setColour(string $colour): void
@@ -54,6 +57,10 @@ class Dish
         return $this->ingredients;
     }
     
+    public function getLikes()
+    {
+        return $this->likesData;
+    }
     /*public function isSpicy(): bool
     {
         return in_array(

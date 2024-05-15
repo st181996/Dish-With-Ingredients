@@ -84,9 +84,13 @@ $dishes = $dishSelect->getDataFromTable();
                     <td>
                         <form action="likes.php" method="POST">
                             <input type="hidden" name="dish_id" value="<?php echo $dish->getDishId(); ?>">
-                            <!--<input type="hidden" name="likes" value="<?php echo $dish->getLikes(); ?>">-->
                             <button type="submit">Like</button>
                         </form>
+                        <?php 
+                        
+                        echo $dish->getLikes(); 
+                        
+                        ?>
                     </td>
                 </tr>
             <?php 

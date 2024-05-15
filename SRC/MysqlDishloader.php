@@ -60,8 +60,22 @@ class MysqlDishloader
              $ingredients = $row['dishingredients'];
              $ingredients = explode(', ', $ingredients);
  			 $ingredients = new Ingredients(...$ingredients);
- 			
-             $dish = new Dish($row['id'], $row['dishname'], $row['dishcolour'], (float) $row['dishprice'], $ingredients);
+ 			 
+ 			 $jsonFilePath = "Dishes.json";
+             $jsonData = file_get_contents($jsonFilePath);       
+             $likesData = json_decode($jsonData, true);
+             
+             $dishID = $row['id'];
+             $dishlikes = 0;
+             
+             foreach ($likesData as $likesID => $currentlikes) {
+                 if ($likesID == $dishID) {
+                     $dishlikes = $currentlikes;
+                     break;
+                 }
+             }
+             
+             $dish = new Dish($dishID, $row['dishname'], $row['dishcolour'], (float) $row['dishprice'], $ingredients, $dishlikes);
              $dishes[] = $dish;
              
          }
@@ -98,7 +112,7 @@ class MysqlDishloader
             }
         }*/
         return $dishes;
-    }
+    }    
 }
 
 
