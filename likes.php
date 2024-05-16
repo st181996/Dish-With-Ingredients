@@ -1,19 +1,25 @@
 <?php 
+
+use App\Dish;
+use App\DishLikesHandler;
+use App\MysqlDishloader;
+use BitAndBlack\SentenceConstruction;
+use Symfony\Component\Dotenv\Dotenv;
+
+require "vendor/autoload.php";
+
+$dotenv = new Dotenv();
+$dotenv->load(__DIR__.'/.env');
+
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
          
     header("location: DishWithIngredients.php");
 } 
 $dish_id = (int)$_POST["dish_id"];
+
+$jsonObject = new DishLikesHandler();           
            
-$jsonFilePath = "Dishes.json";
+$jsonObject->updateDishById($dish_id);
 
-$jsonData = file_get_contents($jsonFilePath);
-            
-$likesData = json_decode($jsonData, true);
-           
-$likesData[$dish_id] = $likesData[$dish_id] + 1;
-
-$updatedJsonData = json_encode($likesData, JSON_PRETTY_PRINT);
-
-file_put_contents($jsonFilePath, $updatedJsonData);
+header("location: DishWithIngredients.php");
   
