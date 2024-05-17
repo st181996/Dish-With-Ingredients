@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App;
@@ -6,15 +7,15 @@ namespace App;
 class DishLikesHandler
 {
     private readonly string $jsonFilePath;
-    
+
     public function __construct()
     {
         $this->jsonFilePath = "Dishes.json";
     }
-    
+
     /**
-      * @return array<int, int>
-      */
+     * @return array<int, int>
+     */
     public function getJsonData(): array
     {
         $jsonData = file_get_contents($this->jsonFilePath);
@@ -27,7 +28,7 @@ class DishLikesHandler
         }
         return $likesData; 
     }
-    
+
     public function getLikesForDish(int $dishID): int
     {
         $likesData = $this->getjsonData(); 
@@ -38,18 +39,17 @@ class DishLikesHandler
         }
         return 0;
     }
-    
+
     public function getFilePath(): string
     {
         return $this->jsonFilePath;
     }
-    
+
     public function updateDishById(int $dish_id): bool
     {
         $likesData = $this->getjsonData();
         $likesData[$dish_id] = $likesData[$dish_id] + 1;
         $updatedJsonData = json_encode($likesData, JSON_PRETTY_PRINT);
         return false !== file_put_contents($this->getFilePath(), $updatedJsonData);
-    }
-    
+    }    
 }

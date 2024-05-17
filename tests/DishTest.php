@@ -6,154 +6,128 @@ use PHPUnit\Framework\TestCase;
 
 class DishTest extends TestCase
 {
-
     public function testDishColor(): void
     {
-    
-        $ingredientA = new Ingredients("Spaghetti Pasta","Eggs","Pancetta","Parmesan Cheese","Blck Pepper","Olive Oil","Garlic","Parsley for garnish");
 
-        $dish = new Dish("Spaghetti Carbonara","Deep Red", 7, $ingredientA);
-    
+        $ingredientA = new Ingredients("Spaghetti Pasta", "Eggs", "Pancetta", "Parmesan Cheese", "Blck Pepper", "Olive Oil", "Garlic", "Parsley for garnish");
+
+        $dish = new Dish("Spaghetti Carbonara", "Deep Red", 7, $ingredientA);
+
         $this->assertSame(
-            "Deep Red", 
+            "Deep Red",
             $dish->getColour()
         );   
     }
-     
+
     public function testDishName(): void
     {
-    
-        $ingredientA = new Ingredients("Spaghetti Pasta","Eggs","Pancetta","Parmesan Cheese","Blck Pepper","Olive Oil","Garlic","Parsley for garnish");
 
-        $dish = new Dish("Spaghetti Carbonara","Deep Red", 7, $ingredientA);
-    
+        $ingredientA = new Ingredients("Spaghetti Pasta", "Eggs", "Pancetta", "Parmesan Cheese", "Blck Pepper", "Olive Oil", "Garlic", "Parsley for garnish");
+
+        $dish = new Dish("Spaghetti Carbonara", "Deep Red", 7, $ingredientA);
+
         $this->assertSame(
-            "Spaghetti Carbonara", 
+            "Spaghetti Carbonara",
             $dish->getDishName()
         );   
     }
-    
+
     public function testDishPrice(): void
     {
-    
-        $ingredientA = new Ingredients("Spaghetti Pasta","Eggs","Pancetta","Parmesan Cheese","Blck Pepper","Olive Oil","Garlic","Parsley for garnish");
 
-        $dish = new Dish("Spaghetti Carbonara","Deep Red", 7, $ingredientA);
-    
+        $ingredientA = new Ingredients("Spaghetti Pasta", "Eggs", "Pancetta", "Parmesan Cheese", "Blck Pepper", "Olive Oil", "Garlic", "Parsley for garnish");
+
+        $dish = new Dish("Spaghetti Carbonara", "Deep Red", 7, $ingredientA);
+
         $this->assertSame(
-            7, 
+            7,
             $dish->getPrice()
         ); 
     }
-    
+
     public function testDishIngredients(): void
     {
-    
-        $ingredientA = new Ingredients("Spaghetti Pasta","Eggs","Pancetta","Parmesan Cheese","Blck Pepper","Olive Oil","Garlic","Parsley for garnish");
 
-        $dish = new Dish("Spaghetti Carbonara","Deep Red", 7, $ingredientA);
-    
+        $ingredientA = new Ingredients("Spaghetti Pasta", "Eggs", "Pancetta", "Parmesan Cheese", "Blck Pepper", "Olive Oil", "Garlic", "Parsley for garnish");
+
+        $dish = new Dish("Spaghetti Carbonara", "Deep Red", 7, $ingredientA);
+
         $this->assertContains(
-            "Spaghetti Pasta", 
+            "Spaghetti Pasta",
             $dish->getIngredients()->getIngredients()
         );
         $this->assertContains(
-            "Eggs", 
+            "Eggs",
             $dish->getIngredients()->getIngredients()
         );
         $this->assertContains(
-            "Pancetta", 
+            "Pancetta",
             $dish->getIngredients()->getIngredients()
         );
         $this->assertContains(
-            "Parmesan Cheese", 
+            "Parmesan Cheese",
             $dish->getIngredients()->getIngredients()
         );
         $this->assertContains(
-            "Blck Pepper", 
+            "Blck Pepper",
             $dish->getIngredients()->getIngredients()
         );
         $this->assertContains(
-            "Olive Oil", 
+            "Olive Oil",
             $dish->getIngredients()->getIngredients()
         );
         $this->assertContains(
-            "Garlic", 
+            "Garlic",
             $dish->getIngredients()->getIngredients()
         );
         $this->assertContains(
-            "Parsley for garnish", 
+            "Parsley for garnish",
             $dish->getIngredients()->getIngredients()
         );
     }
-    
+
     public function testDishIsSpicy(): void
     {
-        $ingredientA = new Ingredients("Spaghetti Pasta","Chilli","Eggs","Pancetta","Parmesan Cheese","Blck Pepper","Olive Oil","Garlic","Parsley for garnish");
+        $ingredientA = new Ingredients("Spaghetti Pasta", "Chilli", "Eggs", "Pancetta", "Parmesan Cheese", "Blck Pepper", "Olive Oil", "Garlic", "Parsley for garnish");
 
-        $dish = new Dish("Spaghetti Carbonara","Deep Red", 7, $ingredientA);
-        
+        $dish = new Dish("Spaghetti Carbonara", "Deep Red", 7, $ingredientA);
+
         $this->assertTrue(
             $dish->isSpicy()
         );  
     }
-    
+
      public function testDishIsSpicyFalse(): void
     {
-        $ingredientA = new Ingredients("Spaghetti Pasta","Eggs","Pancetta","Parmesan Cheese","Blck Pepper","Olive Oil","Garlic","Parsley for garnish");
+        $ingredientA = new Ingredients("Spaghetti Pasta", "Eggs", "Pancetta", "Parmesan Cheese", "Blck Pepper", "Olive Oil", "Garlic", "Parsley for garnish");
 
-        $dish = new Dish("Spaghetti Carbonara","Deep Red", 7, $ingredientA);
-        
+        $dish = new Dish("Spaghetti Carbonara", "Deep Red", 7, $ingredientA);
+
         $this->assertFalse(
             $dish->isSpicy()
         ); 
     }
-    
+
     public function testDishIsSpicyLowerCase(): void
     {
-        $ingredientA = new Ingredients("Spaghetti Pasta","chilli","Eggs","Pancetta","Parmesan Cheese","Blck Pepper","Olive Oil","Garlic","Parsley for garnish");
+        $ingredientA = new Ingredients("Spaghetti Pasta", "chilli", "Eggs", "Pancetta", "Parmesan Cheese", "Blck Pepper", "Olive Oil", "Garlic", "Parsley for garnish");
 
-        $dish = new Dish("Spaghetti Carbonara","Deep Red", 7, $ingredientA);
-        
+        $dish = new Dish("Spaghetti Carbonara", "Deep Red", 7, $ingredientA);
+
         $this->assertTrue(
             $dish->isSpicy()
         );  
     }
-    
+
     public function testDishIsSpicyWordInWord(): void
     {
-        $ingredientA = new Ingredients("Spaghetti Pasta","Chilli Cheese","Eggs","Pancetta","Parmesan Cheese","Blck Pepper","Olive Oil","Garlic","Parsley for garnish");
+        $ingredientA = new Ingredients("Spaghetti Pasta", "Chilli Cheese", "Eggs", "Pancetta", "Parmesan Cheese", "Blck Pepper", "Olive Oil", "Garlic", "Parsley for garnish");
 
-        $dish = new Dish("Spaghetti Carbonara","Deep Red", 7, $ingredientA);
-        
+        $dish = new Dish("Spaghetti Carbonara", "Deep Red", 7, $ingredientA);
+
         $this->assertTrue(
             $dish->isSpicy()
         );
-    }
-    
+    }    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
