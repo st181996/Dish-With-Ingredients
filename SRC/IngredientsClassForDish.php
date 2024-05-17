@@ -2,20 +2,8 @@
 
 class Ingredients
 {
-    private string $ingredientone;
-    
-    private string $ingredienttwo;
-    
-    private string $ingredientthree;
-    
-    private string $ingredientfour;
-    
-    public function __construct(string $ingredientone, string $ingredienttwo, string $ingredientthree, string $ingredientfour)
+    public function __construct(private readonly string $ingredientone, private readonly string $ingredienttwo, private readonly string $ingredientthree, private readonly string $ingredientfour)
     {
-        $this->ingredientone = $ingredientone;
-        $this->ingredienttwo = $ingredienttwo;
-        $this->ingredientthree = $ingredientthree;
-        $this->ingredientfour = $ingredientfour;
     }
     
     public function getIngredientone(): string

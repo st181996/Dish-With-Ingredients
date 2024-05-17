@@ -3,28 +3,13 @@ declare(strict_types=1);
 
 namespace App;
 
+/**
+ * @see \App\DishTest
+ */
 class Dish 
 {
-    private int $dish_id;
-    
-    private string $colour;
-    
-    private float $price;
-    
-    private string $dishname;
-    
-    private Ingredients $ingredients;
-    
-    private mixed $likesData;
-   
-    public function __construct(int $dish_id, string $dishname, string $colour, float $price, Ingredients $ingredients, mixed $likesData)
+    public function __construct(private readonly int $dish_id, private readonly string $dishname, private string $colour, private readonly float $price, private readonly Ingredients $ingredients, private readonly mixed $likesData)
     {
-        $this->dish_id = $dish_id;
-        $this->colour = $colour;
-        $this->price = $price;
-        $this->dishname = $dishname;
-        $this->ingredients = $ingredients;
-        $this->likesData = $likesData;
     }
     
     public function setColour(string $colour): void

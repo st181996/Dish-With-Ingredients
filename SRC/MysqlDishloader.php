@@ -6,7 +6,7 @@ namespace App;
     
 class MysqlDishloader
 {
-    private \mysqli $conn;
+    private readonly \mysqli $conn;
     
     public function __construct(string $db_host, string $db_user, string $db_password, string $db_db)
     {
@@ -64,7 +64,7 @@ class MysqlDishloader
  			 $ingredients = new Ingredients(...$ingredients);
              
              $dishID = (int) $row['id'];
-             $dishlikes = $jsonObject->getLikesForDish((int) $dishID);
+             $dishlikes = $jsonObject->getLikesForDish($dishID);
              
              $dish = new Dish((int) $dishID, $row['dishname'], $row['dishcolour'], (float) $row['dishprice'], $ingredients, $dishlikes);
              $dishes[] = $dish;
@@ -90,9 +90,7 @@ class MysqlDishloader
         $dishes = $this->getDataFromTable();
         $dishes = array_filter(
             $dishes, 
-            function($dish) {
-                return $dish->isSpicy();
-            }
+            fn($dish) => $dish->isSpicy()
         );
         
         /* $dishes = $this->getDataFromTable();
@@ -105,5 +103,3 @@ class MysqlDishloader
         return $dishes;
     }    
 }
-
-

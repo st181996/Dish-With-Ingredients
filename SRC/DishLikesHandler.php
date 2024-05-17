@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App;
 
-Class DishLikesHandler
+class DishLikesHandler
 {
-    private string $jsonFilePath;
+    private readonly string $jsonFilePath;
     
     public function __construct()
     {
@@ -31,10 +31,9 @@ Class DishLikesHandler
     public function getLikesForDish(int $dishID): int
     {
         $likesData = $this->getjsonData(); 
-        foreach ((array) $likesData as $likesID => $currentlikes) {
+        foreach ($likesData as $likesID => $currentlikes) {
             if ($likesID == $dishID) {
-                $dishlikes = $currentlikes;
-                return $dishlikes;
+                return $currentlikes;
             }
         }
         return 0;

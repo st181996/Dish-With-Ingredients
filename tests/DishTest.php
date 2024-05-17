@@ -14,7 +14,7 @@ class DishTest extends TestCase
 
         $dish = new Dish("Spaghetti Carbonara","Deep Red", 7, $ingredientA);
     
-        $this->assertEquals(
+        $this->assertSame(
             "Deep Red", 
             $dish->getColour()
         );   
@@ -27,7 +27,7 @@ class DishTest extends TestCase
 
         $dish = new Dish("Spaghetti Carbonara","Deep Red", 7, $ingredientA);
     
-        $this->assertEquals(
+        $this->assertSame(
             "Spaghetti Carbonara", 
             $dish->getDishName()
         );   
@@ -40,7 +40,7 @@ class DishTest extends TestCase
 
         $dish = new Dish("Spaghetti Carbonara","Deep Red", 7, $ingredientA);
     
-        $this->assertEquals(
+        $this->assertSame(
             7, 
             $dish->getPrice()
         ); 

@@ -5,7 +5,7 @@ class Ingredients
     /**
      * @var array<int|string, string>
      */
-    private array $ingredients;
+    private readonly array $ingredients;
     
     public function __construct(string ...$ingredients)
     {

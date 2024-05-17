@@ -4,8 +4,124 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5c1a3c640c595b8a51a7419f6b996bbe",
+    "content-hash": "7edd20efa66d3a47496ea658f602ea3f",
     "packages": [
+        {
+            "name": "bitandblack/composer-helper",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/wirbelwild/composer-helper.git",
+                "reference": "7e55efc88d26a4bf332145465449028e20477821"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/wirbelwild/composer-helper/get/7e55efc88d26a4bf332145465449028e20477821.zip",
+                "reference": "7e55efc88d26a4bf332145465449028e20477821",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.0",
+                "phpunit/phpunit": "^9.0",
+                "rector/rector": "^0.12",
+                "symplify/easy-coding-standard": "^10.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BitAndBlack\\Composer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Köngeter",
+                    "email": "hello@bitandblack.com",
+                    "homepage": "https://www.bitandblack.com"
+                }
+            ],
+            "description": "Some additional composer functions",
+            "homepage": "https://www.bitandblack.com",
+            "support": {
+                "source": "https://bitbucket.org/wirbelwild/composer-helper/src/7e55efc88d26a4bf332145465449028e20477821/?at=1.0.1"
+            },
+            "time": "2023-08-14T14:28:39+00:00"
+        },
+        {
+            "name": "bitandblack/helpers",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/wirbelwild/helpers.git",
+                "reference": "e99167d544aafb725bb931f65991945851d15fe0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/wirbelwild/helpers/get/e99167d544aafb725bb931f65991945851d15fe0.zip",
+                "reference": "e99167d544aafb725bb931f65991945851d15fe0",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-dom": "*",
+                "ext-json": "*",
+                "ext-libxml": "*",
+                "ext-mbstring": "*",
+                "php": ">=8.2"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.0",
+                "phpunit/phpunit": "^10.0",
+                "rector/rector": "^0",
+                "symplify/easy-coding-standard": "^11.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BitAndBlack\\Helpers\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Köngeter",
+                    "email": "hello@bitandblack.com",
+                    "homepage": "https://www.bitandblack.com"
+                }
+            ],
+            "description": "Useful methods for PHP you may like.",
+            "homepage": "https://www.bitandblack.com",
+            "keywords": [
+                "array",
+                "condition",
+                "number",
+                "request",
+                "sanitize",
+                "string",
+                "url",
+                "xml"
+            ],
+            "support": {
+                "issues": "https://bitbucket.org/wirbelwild/helpers/issues",
+                "source": "https://bitbucket.org/wirbelwild/helpers/src/e99167d544aafb725bb931f65991945851d15fe0/?at=2.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://www.buymeacoffee.com/tobiaskoengeter",
+                    "type": "buymeacoffee"
+                }
+            ],
+            "time": "2023-08-18T06:57:17+00:00"
+        },
         {
             "name": "bitandblack/sentence-construction",
             "version": "2.0.0",
@@ -67,6 +183,71 @@
                 }
             ],
             "time": "2022-06-03T12:26:06+00:00"
+        },
+        {
+            "name": "bitandblack/typorules",
+            "version": "0.6.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BitAndBlack/typorules.git",
+                "reference": "cdd475b7dc11e26349420c7efeede08ee1c4c4b2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/BitAndBlack/typorules/zipball/cdd475b7dc11e26349420c7efeede08ee1c4c4b2",
+                "reference": "cdd475b7dc11e26349420c7efeede08ee1c4c4b2",
+                "shasum": ""
+            },
+            "require": {
+                "bitandblack/composer-helper": "^1.0",
+                "bitandblack/helpers": "^1.0 || ^2.0",
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "nette/robot-loader": "^4.0",
+                "org_heigl/hyphenator": "^3.0",
+                "phpstan/phpstan": "^1.0",
+                "phpunit/phpunit": "^11.0",
+                "rector/rector": "^1.0",
+                "symfony/console": "^7.0",
+                "symplify/easy-coding-standard": "^12.0"
+            },
+            "suggest": {
+                "bitandblack/indesign-characters": "If you want to uses spaces for Adobe InDesign."
+            },
+            "bin": [
+                "bin/console"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BitAndBlack\\TypoRules\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Köngeter",
+                    "email": "hello@bitandblack.com",
+                    "homepage": "https://www.bitandblack.com"
+                }
+            ],
+            "description": "Typographic improvements for professional-looking and easy-to-read texts.",
+            "homepage": "https://www.bitandblack.com",
+            "support": {
+                "issues": "https://github.com/BitAndBlack/typorules/issues",
+                "source": "https://github.com/BitAndBlack/typorules/tree/0.6.1"
+            },
+            "funding": [
+                {
+                    "url": "https://www.buymeacoffee.com/tobiaskoengeter",
+                    "type": "buymeacoffee"
+                }
+            ],
+            "time": "2024-05-14T19:38:13+00:00"
         },
         {
             "name": "symfony/dotenv",
@@ -859,6 +1040,65 @@
                 }
             ],
             "time": "2024-04-24T06:34:25+00:00"
+        },
+        {
+            "name": "rector/rector",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rectorphp/rector.git",
+                "reference": "73eb63e4f9011dba6b7c66c3262543014e352f34"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/73eb63e4f9011dba6b7c66c3262543014e352f34",
+                "reference": "73eb63e4f9011dba6b7c66c3262543014e352f34",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2|^8.0",
+                "phpstan/phpstan": "^1.10.57"
+            },
+            "conflict": {
+                "rector/rector-doctrine": "*",
+                "rector/rector-downgrade-php": "*",
+                "rector/rector-phpunit": "*",
+                "rector/rector-symfony": "*"
+            },
+            "suggest": {
+                "ext-dom": "To manipulate phpunit.xml via the custom-rule command"
+            },
+            "bin": [
+                "bin/rector"
+            ],
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Instant Upgrade and Automated Refactoring of any PHP code",
+            "keywords": [
+                "automation",
+                "dev",
+                "migration",
+                "refactoring"
+            ],
+            "support": {
+                "issues": "https://github.com/rectorphp/rector/issues",
+                "source": "https://github.com/rectorphp/rector/tree/1.0.5"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/tomasvotruba",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-05-10T05:31:15+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -1782,6 +2022,64 @@
                 }
             ],
             "time": "2024-02-02T06:10:47+00:00"
+        },
+        {
+            "name": "symplify/easy-coding-standard",
+            "version": "12.1.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/easy-coding-standard/easy-coding-standard.git",
+                "reference": "e3c4a241ee36704f7cf920d5931f39693e64afd5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/easy-coding-standard/easy-coding-standard/zipball/e3c4a241ee36704f7cf920d5931f39693e64afd5",
+                "reference": "e3c4a241ee36704f7cf920d5931f39693e64afd5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "conflict": {
+                "friendsofphp/php-cs-fixer": "<3.46",
+                "phpcsstandards/php_codesniffer": "<3.8",
+                "symplify/coding-standard": "<12.1"
+            },
+            "bin": [
+                "bin/ecs"
+            ],
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Use Coding Standard with 0-knowledge of PHP-CS-Fixer and PHP_CodeSniffer",
+            "keywords": [
+                "Code style",
+                "automation",
+                "fixer",
+                "static analysis"
+            ],
+            "support": {
+                "issues": "https://github.com/easy-coding-standard/easy-coding-standard/issues",
+                "source": "https://github.com/easy-coding-standard/easy-coding-standard/tree/12.1.14"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/rectorphp",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/tomasvotruba",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-02-23T13:10:40+00:00"
         },
         {
             "name": "theseer/tokenizer",

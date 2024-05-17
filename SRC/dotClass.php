@@ -2,20 +2,8 @@
 
 class Dish 
 {
-    private bool $colour;
-    
-    private float $price;
-    
-    private string $dishname;
-    
-    private Ingredients $ingredients;
-    
-    public function __construct(string $dishname, bool $colour, float $price, Ingredients $ingredients)
+    public function __construct(private readonly string $dishname, private bool $colour, private readonly float $price, private Ingredients $ingredients)
     {
-        $this->colour = $colour;
-        $this->price = $price;
-        $this->dishname = $dishname;
-        $this->ingredients = $ingredients;
     }
     
     public function setColour(bool $colour): void
