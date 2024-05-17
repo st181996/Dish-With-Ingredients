@@ -10,7 +10,7 @@ class DishTest extends TestCase
     {
         $ingredientA = new Ingredients("Spaghetti Pasta", "Eggs", "Pancetta", "Parmesan Cheese", "Blck Pepper", "Olive Oil", "Garlic", "Parsley for garnish");
 
-        $dish = new Dish("Spaghetti Carbonara", "Deep Red", 7, $ingredientA);
+        $dish = new Dish(1, "Spaghetti Carbonara", "Deep Red", 7, $ingredientA, 19);
 
         $this->assertSame(
             "Deep Red",
@@ -22,7 +22,7 @@ class DishTest extends TestCase
     {
         $ingredientA = new Ingredients("Spaghetti Pasta", "Eggs", "Pancetta", "Parmesan Cheese", "Blck Pepper", "Olive Oil", "Garlic", "Parsley for garnish");
 
-        $dish = new Dish("Spaghetti Carbonara", "Deep Red", 7, $ingredientA);
+        $dish = new Dish(1, "Spaghetti Carbonara", "Deep Red", 7, $ingredientA, 19);
 
         $this->assertSame(
             "Spaghetti Carbonara",
@@ -34,19 +34,16 @@ class DishTest extends TestCase
     {
         $ingredientA = new Ingredients("Spaghetti Pasta", "Eggs", "Pancetta", "Parmesan Cheese", "Blck Pepper", "Olive Oil", "Garlic", "Parsley for garnish");
 
-        $dish = new Dish("Spaghetti Carbonara", "Deep Red", 7, $ingredientA);
+        $dish = new Dish(1, "Spaghetti Carbonara", "Deep Red", 7, $ingredientA, 19);
 
-        $this->assertSame(
-            7,
-            $dish->getPrice()
-        );
+        $this->assertEqualsWithDelta(7.0, $dish->getPrice(), PHP_FLOAT_EPSILON);
     }
 
     public function testDishIngredients(): void
     {
         $ingredientA = new Ingredients("Spaghetti Pasta", "Eggs", "Pancetta", "Parmesan Cheese", "Blck Pepper", "Olive Oil", "Garlic", "Parsley for garnish");
 
-        $dish = new Dish("Spaghetti Carbonara", "Deep Red", 7, $ingredientA);
+        $dish = new Dish(1, "Spaghetti Carbonara", "Deep Red", 7, $ingredientA, 19);
 
         $this->assertContains(
             "Spaghetti Pasta",
@@ -86,7 +83,7 @@ class DishTest extends TestCase
     {
         $ingredientA = new Ingredients("Spaghetti Pasta", "Chilli", "Eggs", "Pancetta", "Parmesan Cheese", "Blck Pepper", "Olive Oil", "Garlic", "Parsley for garnish");
 
-        $dish = new Dish("Spaghetti Carbonara", "Deep Red", 7, $ingredientA);
+        $dish = new Dish(1, "Spaghetti Carbonara", "Deep Red", 7, $ingredientA, 19);
 
         $this->assertTrue(
             $dish->isSpicy()
@@ -97,7 +94,7 @@ class DishTest extends TestCase
     {
         $ingredientA = new Ingredients("Spaghetti Pasta", "Eggs", "Pancetta", "Parmesan Cheese", "Blck Pepper", "Olive Oil", "Garlic", "Parsley for garnish");
 
-        $dish = new Dish("Spaghetti Carbonara", "Deep Red", 7, $ingredientA);
+        $dish = new Dish(1, "Spaghetti Carbonara", "Deep Red", 7, $ingredientA, 19);
 
         $this->assertFalse(
             $dish->isSpicy()
@@ -108,7 +105,7 @@ class DishTest extends TestCase
     {
         $ingredientA = new Ingredients("Spaghetti Pasta", "chilli", "Eggs", "Pancetta", "Parmesan Cheese", "Blck Pepper", "Olive Oil", "Garlic", "Parsley for garnish");
 
-        $dish = new Dish("Spaghetti Carbonara", "Deep Red", 7, $ingredientA);
+        $dish = new Dish(1, "Spaghetti Carbonara", "Deep Red", 7, $ingredientA, 19);
 
         $this->assertTrue(
             $dish->isSpicy()
@@ -119,7 +116,7 @@ class DishTest extends TestCase
     {
         $ingredientA = new Ingredients("Spaghetti Pasta", "Chilli Cheese", "Eggs", "Pancetta", "Parmesan Cheese", "Blck Pepper", "Olive Oil", "Garlic", "Parsley for garnish");
 
-        $dish = new Dish("Spaghetti Carbonara", "Deep Red", 7, $ingredientA);
+        $dish = new Dish(1, "Spaghetti Carbonara", "Deep Red", 7, $ingredientA, 19);
 
         $this->assertTrue(
             $dish->isSpicy()
