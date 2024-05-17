@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 namespace App;
 
+use mysqli;
+
 class MysqlDishloader
 {
-    private readonly \mysqli $conn;
+    private readonly mysqli $conn;
 
     public function __construct(string $db_host, string $db_user, string $db_password, string $db_db)
     {
-        $conn = new \mysqli(
+        $conn = new mysqli(
             $db_host,
             $db_user,
             $db_password,
@@ -30,48 +32,46 @@ class MysqlDishloader
         $this->conn = $conn;
     }
 
-     /**
-      * @return array<int, Dish>
-      */
-     public function getDataFromTable(): array
-     {
-         $query = "SELECT id, dishname, dishcolour, dishprice, dishingredients FROM Dish";
-         return $this->getDataConnection($query);
+    /**
+     * @return array<int, Dish>
+     */
+    public function getDataFromTable(): array
+    {
+        $query = "SELECT id, dishname, dishcolour, dishprice, dishingredients FROM Dish";
+        return $this->getDataConnection($query);
+    }
 
-     }
+    /**
+     * @return array<int, Dish>
+     */
+    public function getdataConnection(string $query): array
+    {
+        $dishes = [];
+        $stmt = $this->conn->prepare($query);
+        if (false === $stmt) {
+            return $dishes;
+        }
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if (false === $result) {
+            return $dishes;
+        }
 
-     /**
-      * @return array<int, Dish>
-      */
-     public function getdataConnection(string $query): array
-     {
-         $dishes = [];
-         $stmt = $this->conn->prepare($query);
-         if ($stmt === false) {
-             return $dishes;   
-         }
-         $stmt->execute();
-         $result = $stmt->get_result();
-         if ($result === false) {
-             return $dishes;  
-         }
+        $jsonObject = new DishLikesHandler();
 
-         $jsonObject = new DishLikesHandler();
+        while ($row = $result->fetch_assoc()) {
+            $ingredients = $row['dishingredients'];
+            $ingredients = explode(', ', $ingredients);
+            $ingredients = new Ingredients(...$ingredients);
 
-         while ($row = $result->fetch_assoc()) {            
-             $ingredients = $row['dishingredients'];
-             $ingredients = explode(', ', $ingredients);
- 			 $ingredients = new Ingredients(...$ingredients);
+            $dishID = (int) $row['id'];
+            $dishlikes = $jsonObject->getLikesForDish($dishID);
 
-             $dishID = (int) $row['id'];
-             $dishlikes = $jsonObject->getLikesForDish($dishID);
-
-             $dish = new Dish((int) $dishID, $row['dishname'], $row['dishcolour'], (float) $row['dishprice'], $ingredients, $dishlikes);
-             $dishes[] = $dish;
-
-         }
-         return $dishes;
-     }
+            $dish = new Dish((int) $dishID, $row['dishname'], $row['dishcolour'], (float) $row['dishprice'], $ingredients, $dishlikes);
+            $dishes[] = $dish;
+        }
+        return $dishes;
+    }
 
     /**
      * @return array<int, Dish>
@@ -80,17 +80,17 @@ class MysqlDishloader
     {
         $query = "SELECT id, dishname, dishcolour, dishprice, dishingredients FROM Dish WHERE dishingredients LIKE '%Chilli%'";
         return $this->getDataConnection($query);
-    } 
+    }
 
     /**
      * @return array<int, Dish>
      */
-    public function getSpicyDishOnly(): array 
+    public function getSpicyDishOnly(): array
     {
         $dishes = $this->getDataFromTable();
         $dishes = array_filter(
             $dishes,
-            fn($dish) => $dish->isSpicy()
+            fn ($dish) => $dish->isSpicy()
         );
 
         /* $dishes = $this->getDataFromTable();
@@ -101,5 +101,5 @@ class MysqlDishloader
             }
         }*/
         return $dishes;
-    }    
+    }
 }

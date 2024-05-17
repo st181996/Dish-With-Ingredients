@@ -20,5 +20,5 @@ class Ingredients
     public function getIngredients(): array
     {
         return $this->ingredients;
-    }     
+    }
 }

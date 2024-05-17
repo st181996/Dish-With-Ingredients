@@ -20,18 +20,18 @@ class DishLikesHandler
     {
         $jsonData = file_get_contents($this->jsonFilePath);
         $likesData = [];
-        if ($jsonData !== false) {  
+        if (false !== $jsonData) {
             $likesData = json_decode($jsonData, true);
         }
         if (is_array($likesData) !== true) {
             $likesData = [];
         }
-        return $likesData; 
+        return $likesData;
     }
 
     public function getLikesForDish(int $dishID): int
     {
-        $likesData = $this->getjsonData(); 
+        $likesData = $this->getjsonData();
         foreach ($likesData as $likesID => $currentlikes) {
             if ($likesID == $dishID) {
                 return $currentlikes;
@@ -51,5 +51,5 @@ class DishLikesHandler
         $likesData[$dish_id] = $likesData[$dish_id] + 1;
         $updatedJsonData = json_encode($likesData, JSON_PRETTY_PRINT);
         return false !== file_put_contents($this->getFilePath(), $updatedJsonData);
-    }    
+    }
 }

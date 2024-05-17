@@ -1,30 +1,29 @@
 <?php
 
-class Dish 
+class Dish
 {
     public function __construct(
         private readonly string $dishname,
         private bool $colour,
         private readonly float $price,
         private Ingredients $ingredients
-    )
-    {
+    ) {
     }
 
     public function setColour(bool $colour): void
     {
-    	$this->colour = $colour;
+        $this->colour = $colour;
     }
 
-     public function setIngredients(Ingredients $ingredients): void
+    public function setIngredients(Ingredients $ingredients): void
     {
-    	$this->ingredients = $ingredients;
+        $this->ingredients = $ingredients;
     }
 
     public function getColour(): bool
     {
         return $this->colour;
-    }  
+    }
 
     public function getPrice(): float
     {
@@ -39,6 +38,5 @@ class Dish
     public function getDishName(): string
     {
         return $this->dishname;
-    }    
+    }
 }
-

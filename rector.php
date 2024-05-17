@@ -14,7 +14,7 @@ return RectorConfig::configure()
     ])
     ->withSkip([
         __DIR__ . DIRECTORY_SEPARATOR . 'vendor',
-        //PreferPHPUnitThisCallRector::class,
+       
     ])
     // uncomment to reach your current PHP version
     ->withPhpSets()
@@ -24,4 +24,5 @@ return RectorConfig::configure()
     ])
     ->withRules([
         AddVoidReturnTypeWhereNoReturnRector::class,
-    ]);
+    ])
+    ->withImportNames();

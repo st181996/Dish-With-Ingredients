@@ -10,7 +10,6 @@ class Ingredients
     public function __construct(string ...$ingredients)
     {
         $this->ingredients = $ingredients;
-
     }
 
     /**
@@ -19,5 +18,5 @@ class Ingredients
     public function getIngredients(): array
     {
         return $this->ingredients;
-    }         
+    }
 }

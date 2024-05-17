@@ -7,7 +7,7 @@ namespace App;
 /**
  * @see \App\DishTest
  */
-class Dish 
+class Dish
 {
     public function __construct(
         private readonly int $dish_id,
@@ -16,13 +16,12 @@ class Dish
         private readonly float $price,
         private readonly Ingredients $ingredients,
         private readonly mixed $likesData
-    )
-    {
+    ) {
     }
 
     public function setColour(string $colour): void
     {
-    	$this->colour = $colour;
+        $this->colour = $colour;
     }
 
     public function getDishId(): int
@@ -33,7 +32,7 @@ class Dish
     public function getColour(): string
     {
         return $this->colour;
-    }  
+    }
 
     public function getPrice(): float
     {
@@ -67,7 +66,6 @@ class Dish
         $ingredientList = $this->ingredients->getIngredients();
 
         foreach ($ingredientList as $ingredient) {
-
             if (stripos($ingredient, "Chilli") !== false) {
                 return true;
             }
@@ -75,4 +73,3 @@ class Dish
         return false;
     }
 }
-

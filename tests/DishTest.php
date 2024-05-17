@@ -8,7 +8,6 @@ class DishTest extends TestCase
 {
     public function testDishColor(): void
     {
-
         $ingredientA = new Ingredients("Spaghetti Pasta", "Eggs", "Pancetta", "Parmesan Cheese", "Blck Pepper", "Olive Oil", "Garlic", "Parsley for garnish");
 
         $dish = new Dish("Spaghetti Carbonara", "Deep Red", 7, $ingredientA);
@@ -16,12 +15,11 @@ class DishTest extends TestCase
         $this->assertSame(
             "Deep Red",
             $dish->getColour()
-        );   
+        );
     }
 
     public function testDishName(): void
     {
-
         $ingredientA = new Ingredients("Spaghetti Pasta", "Eggs", "Pancetta", "Parmesan Cheese", "Blck Pepper", "Olive Oil", "Garlic", "Parsley for garnish");
 
         $dish = new Dish("Spaghetti Carbonara", "Deep Red", 7, $ingredientA);
@@ -29,12 +27,11 @@ class DishTest extends TestCase
         $this->assertSame(
             "Spaghetti Carbonara",
             $dish->getDishName()
-        );   
+        );
     }
 
     public function testDishPrice(): void
     {
-
         $ingredientA = new Ingredients("Spaghetti Pasta", "Eggs", "Pancetta", "Parmesan Cheese", "Blck Pepper", "Olive Oil", "Garlic", "Parsley for garnish");
 
         $dish = new Dish("Spaghetti Carbonara", "Deep Red", 7, $ingredientA);
@@ -42,12 +39,11 @@ class DishTest extends TestCase
         $this->assertSame(
             7,
             $dish->getPrice()
-        ); 
+        );
     }
 
     public function testDishIngredients(): void
     {
-
         $ingredientA = new Ingredients("Spaghetti Pasta", "Eggs", "Pancetta", "Parmesan Cheese", "Blck Pepper", "Olive Oil", "Garlic", "Parsley for garnish");
 
         $dish = new Dish("Spaghetti Carbonara", "Deep Red", 7, $ingredientA);
@@ -94,10 +90,10 @@ class DishTest extends TestCase
 
         $this->assertTrue(
             $dish->isSpicy()
-        );  
+        );
     }
 
-     public function testDishIsSpicyFalse(): void
+    public function testDishIsSpicyFalse(): void
     {
         $ingredientA = new Ingredients("Spaghetti Pasta", "Eggs", "Pancetta", "Parmesan Cheese", "Blck Pepper", "Olive Oil", "Garlic", "Parsley for garnish");
 
@@ -105,7 +101,7 @@ class DishTest extends TestCase
 
         $this->assertFalse(
             $dish->isSpicy()
-        ); 
+        );
     }
 
     public function testDishIsSpicyLowerCase(): void
@@ -116,7 +112,7 @@ class DishTest extends TestCase
 
         $this->assertTrue(
             $dish->isSpicy()
-        );  
+        );
     }
 
     public function testDishIsSpicyWordInWord(): void
@@ -128,6 +124,5 @@ class DishTest extends TestCase
         $this->assertTrue(
             $dish->isSpicy()
         );
-    }    
+    }
 }
-
