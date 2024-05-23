@@ -10,6 +10,7 @@ use PHPUnit\Framework\TestCase;
 class MysqlDishLoaderTest extends TestCase
 {
     private mysqli $conn;
+
     private ?MysqlDishloader $MysqlDishloader;
 
     protected function setUp(): void
@@ -35,7 +36,7 @@ class MysqlDishLoaderTest extends TestCase
         $sql = "INSERT INTO Dish (id, dishname, dishcolour, dishprice, dishingredients)
         VALUES ('2', 'Chicken Stir-Fry', 'Rich Yellow', '5.2', 'Chicken Breast, Soy Sauce, Garlic, Ginger, Onion, Sesame Oil, Cornstarch, Chilli, Rice for serving')";
         $update = $this->conn->query($sql);
-        
+
         $this->MysqlDishloader = new MysqlDishloader($_ENV["DB_HOST"], $_ENV["DB_USER"], $_ENV["DB_PASSWORD"], $_ENV["DB_DB"]);
     }
 
@@ -89,7 +90,7 @@ class MysqlDishLoaderTest extends TestCase
         $sql = "TRUNCATE TABLE Dish";
         $update = $this->conn->query($sql);
         $this->conn->close();
-        
+
         $this->MysqlDishloader = null;
     }
 }
