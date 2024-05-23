@@ -22,12 +22,12 @@ class MysqlDishloader
             echo 'Error: ' . $conn->connect_error;
             exit();
         }
-        echo 'Success: A proper connection to MySQL was made.';
-        echo '<br>';
-        echo 'Host information: ' . $conn->host_info;
-        echo '<br>';
-        echo 'Protocol version: ' . $conn->protocol_version;
-        echo '<br>';
+        // echo 'Success: A proper connection to MySQL was made.';
+//         echo '<br>';
+//         echo 'Host information: ' . $conn->host_info;
+//         echo '<br>';
+//         echo 'Protocol version: ' . $conn->protocol_version;
+//         echo '<br>';
 
         $this->conn = $conn;
     }

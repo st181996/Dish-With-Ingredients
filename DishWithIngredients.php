@@ -57,7 +57,7 @@ $dishes = $dishSelect->getDataFromTable();
             <?php
             
             foreach ($dishes as $dish) { 
-                
+               
             ?>
                 <tr>
                     <td><?php echo $dish->getDishId(); ?></td>
