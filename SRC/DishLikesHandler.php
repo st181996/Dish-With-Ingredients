@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace App;
 
+/**
+ * @see \App\DishLikesHandlerTest
+ */
 class DishLikesHandler
 {
-    private readonly string $jsonFilePath;
+    private string $jsonFilePath;
 
     public function __construct()
     {
@@ -43,6 +46,11 @@ class DishLikesHandler
     public function getFilePath(): string
     {
         return $this->jsonFilePath;
+    }
+
+    public function setFilePath(string $jsonFilePath): void
+    {
+        $this->jsonFilePath = $jsonFilePath;
     }
 
     public function updateDishById(int $dish_id): bool

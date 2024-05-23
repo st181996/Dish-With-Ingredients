@@ -34,7 +34,7 @@ class DishTest extends TestCase
     {
         $ingredientA = new Ingredients("Spaghetti Pasta", "Eggs", "Pancetta", "Parmesan Cheese", "Blck Pepper", "Olive Oil", "Garlic", "Parsley for garnish");
 
-        $dish = new Dish(1, "Spaghetti Carbonara", "Deep Red", 7, $ingredientA, 19);
+        $dish = new Dish(1, "Spaghetti Carbonara", "Deep Red", 7.0, $ingredientA, 19);
 
         $this->assertEqualsWithDelta(7.0, $dish->getPrice(), PHP_FLOAT_EPSILON);
     }
