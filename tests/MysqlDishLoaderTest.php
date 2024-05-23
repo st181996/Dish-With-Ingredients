@@ -10,6 +10,7 @@ use PHPUnit\Framework\TestCase;
 class MysqlDishLoaderTest extends TestCase
 {
     private mysqli $conn;
+    private ?MysqlDishloader $MysqlDishloader;
 
     protected function setUp(): void
     {
@@ -34,13 +35,13 @@ class MysqlDishLoaderTest extends TestCase
         $sql = "INSERT INTO Dish (id, dishname, dishcolour, dishprice, dishingredients)
         VALUES ('2', 'Chicken Stir-Fry', 'Rich Yellow', '5.2', 'Chicken Breast, Soy Sauce, Garlic, Ginger, Onion, Sesame Oil, Cornstarch, Chilli, Rice for serving')";
         $update = $this->conn->query($sql);
+        
+        $this->MysqlDishloader = new MysqlDishloader($_ENV["DB_HOST"], $_ENV["DB_USER"], $_ENV["DB_PASSWORD"], $_ENV["DB_DB"]);
     }
 
     public function testgetDataFromTable(): void
     {
-        $dishSelect = new MysqlDishloader($_ENV["DB_HOST"], $_ENV["DB_USER"], $_ENV["DB_PASSWORD"], $_ENV["DB_DB"]);
-
-        $dishes = $dishSelect->getDataFromTable();
+        $dishes = $this->MysqlDishloader->getDataFromTable();
 
         // Code to check method when only one dish is inserted
         // foreach ($dishes as $dish) {
@@ -56,9 +57,7 @@ class MysqlDishLoaderTest extends TestCase
 
     public function testgetSpicyDishonly(): void
     {
-        $dishSelect = new MysqlDishloader($_ENV["DB_HOST"], $_ENV["DB_USER"], $_ENV["DB_PASSWORD"], $_ENV["DB_DB"]);
-
-        $dishes = $dishSelect->getSpicyDishOnly();
+        $dishes = $this->MysqlDishloader->getSpicyDishOnly();
 
         $this->assertCount(1, $dishes);
 
@@ -71,20 +70,16 @@ class MysqlDishLoaderTest extends TestCase
 
     public function testgetdataConnection(): void
     {
-        $dishSelect = new MysqlDishloader($_ENV["DB_HOST"], $_ENV["DB_USER"], $_ENV["DB_PASSWORD"], $_ENV["DB_DB"]);
-
         $query = "SELECT id, dishname, dishcolour, dishprice, dishingredients FROM Dish";
 
-        $dishes = $dishSelect->getdataConnection($query);
+        $dishes = $this->MysqlDishloader->getdataConnection($query);
 
         $this->assertCount(2, $dishes);
     }
 
     public function testgetDataFromTableWithKeyword(): void
     {
-        $dishSelect = new MysqlDishloader($_ENV["DB_HOST"], $_ENV["DB_USER"], $_ENV["DB_PASSWORD"], $_ENV["DB_DB"]);
-
-        $dishes = $dishSelect->getDataFromTableWithKeyword();
+        $dishes = $this->MysqlDishloader->getDataFromTableWithKeyword();
 
         $this->assertCount(1, $dishes);
     }
@@ -93,7 +88,8 @@ class MysqlDishLoaderTest extends TestCase
     {
         $sql = "TRUNCATE TABLE Dish";
         $update = $this->conn->query($sql);
-
         $this->conn->close();
+        
+        $this->MysqlDishloader = null;
     }
 }
