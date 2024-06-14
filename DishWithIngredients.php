@@ -29,6 +29,7 @@ $dishes = array(
 
 $dishSelect = new MysqlDishloader($_ENV["DB_HOST"], $_ENV["DB_USER"], $_ENV["DB_PASSWORD"], $_ENV["DB_DB"]);
 $dishes = $dishSelect->getDataFromTable();
+//dump($dishes);
 //$dishes = $dishSelect->getDataFromTableWithKeyword();
 
 // Code to get just the spicy dishes
