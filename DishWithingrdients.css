@@ -5,6 +5,12 @@
     padding: 20px;
 }
 
+.colour {
+    color: green;
+    margin: 20px;
+    padding: 20px;
+}
+
 table, 
 th {
     color: pink;
@@ -33,7 +39,7 @@ h1 {
         
 td:first-child {
     color: blue;
-    /*background-color: lightblue;*/
+    background-color: lightblue;
 }
         
 td:nth-child(2) {

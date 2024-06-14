@@ -63,7 +63,11 @@ $dishes = $dishSelect->getDataFromTable();
                 <tr>
                     <td><?php echo $dish->getDishId(); ?></td>
                     <td><?php echo $dish->getDishName(); ?></td>
-                    <td><?php echo $dish->getColour(); ?></td>
+                    <td>
+                        <section class="colour">
+                            <?php echo $dish->getColour(); ?>
+                        </section>  
+                    </td>
                     <!--<td><?php echo $dish->getPrice(); ?></td>-->
                     <td>
                         <div class="price">
