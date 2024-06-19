@@ -14,7 +14,8 @@ require "vendor/autoload.php";
 $dotenv = new Dotenv();
 $dotenv->load(__DIR__.'/.env');
 
-echo "Today is " . date("Y/m/d") . "<br>";
+$date = new DateTimeImmutable('now', new DateTimeZone('Europe/Berlin'));
+echo $date->format('Y-m-d H:i');
 
 /*$ingredientA = new Ingredients("Spaghetti Pasta","Eggs","Pancetta","Parmesan Cheese","Blck Pepper","Olive Oil","Garlic","Parsley for garnish");
 $ingredientB = new Ingredients("Chicken Breast","Soy Sauce","Garlic","Ginger","Onion","Sesame Oil","Cornstarch","Chilli","Rice for serving");
@@ -46,6 +47,14 @@ $dishes = $dishSelect->getDataFromTable();
     </head>
     <body>
         <h1>Table For Restaurant</h1>
+        <h2>
+            <?php 
+                echo "<br>" . "Order now and get it by";
+                $date = $date->modify('+2 hours');
+                echo $date->format(" H:i");
+                echo " !";
+            ?>
+        <h2>
         <table>
             <tr>
                 <th>Dish Id</th>
@@ -53,7 +62,8 @@ $dishes = $dishSelect->getDataFromTable();
                 <th>Dish Colour</th>
                 <th>Dish Price</th>
                 <th>Dish Ingredients</th>
-                <th>likes</th>
+                <th>Likes</th>
+                <th>Estimated Delivery Time</th>
             </tr>
             <?php
             
@@ -95,6 +105,13 @@ $dishes = $dishSelect->getDataFromTable();
                         
                         echo $dish->getLikes(); 
                         
+                        ?>
+                    </td>
+                    <td>
+                        <?php 
+                            $deliveryTime = $dish->getDeliveryTime(); 
+                            $deliveryTime = $deliveryTime->format("H:i");
+                            echo $deliveryTime;
                         ?>
                     </td>
                 </tr>

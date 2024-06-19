@@ -65,12 +65,12 @@ class MysqlDishloader
         while ($row = $result->fetch_assoc()) {
             $ingredients = $row['dishingredients'];
             $ingredients = explode(', ', $ingredients);
-            $ingredients = new Ingredients(...$ingredients);
+            $ingredientsobject = new Ingredients(...$ingredients);
 
             $dishID = (int) $row['id'];
             $dishlikes = $jsonObject->getLikesForDish($dishID);
 
-            $dish = new Dish((int) $dishID, $row['dishname'], $row['dishcolour'], (float) $row['dishprice'], $ingredients, $dishlikes);
+            $dish = new Dish((int) $dishID, $row['dishname'], $row['dishcolour'], (float) $row['dishprice'], $ingredientsobject, $dishlikes);
             $dishes[] = $dish;
         }
         return $dishes;

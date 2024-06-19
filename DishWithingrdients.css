@@ -36,6 +36,10 @@ h1 {
     font-size: 250%;
     padding: 30px;
 }
+
+h2 {
+    color: red;
+}
         
 td:first-child {
     color: blue;
@@ -44,6 +48,7 @@ td:first-child {
         
 td:nth-child(2) {
     color: lightblue;
+    background: #FFFFBA;
 }
     
 div {

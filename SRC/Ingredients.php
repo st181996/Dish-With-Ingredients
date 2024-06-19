@@ -2,6 +2,9 @@
 
 namespace App;
 
+/**
+ * @see \App\IngredientsTest
+ */
 class Ingredients
 {
     /**
@@ -20,5 +23,12 @@ class Ingredients
     public function getIngredients(): array
     {
         return $this->ingredients;
+    }
+
+    public function getIngredientsCount(): int
+    {
+        $ingredients = $this->ingredients;
+        $numberOfIngredients = count($ingredients);
+        return $numberOfIngredients;
     }
 }
