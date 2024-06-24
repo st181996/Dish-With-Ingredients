@@ -123,20 +123,17 @@ class DishTest extends TestCase
         );
     }
 
-    public function testgetDeliveryTime(): void
+    public function testgetDishTime(): void
     {
         $ingredientA = new Ingredients("Spaghetti Pasta");
         $dish1 = new Dish(1, "Spaghetti Carbonara", "Deep Red", 7, $ingredientA, 19);
 
         $ingredientB = new Ingredients("Spaghetti Pasta", "apple");
-        $dish2 = new Dish(1, "Spaghetti Carbonara", "Deep Red", 7, $ingredientA, 19);
-
-        $ingredientC = new Ingredients("Spaghetti Pasta", "apple", "eggs");
-        $dish3 = new Dish(1, "Spaghetti Carbonara", "Deep Red", 7, $ingredientA, 19);
+        $dish2 = new Dish(1, "Spaghetti Carbonara", "Deep Red", 7, $ingredientB, 19);
 
         $this->assertGreaterThan(
-            $dish3->getDeliveryTime(),
-            $dish2->getDeliveryTime()
+            $dish1->getDishTime(),
+            $dish2->getDishTime()
         );
     }
 }

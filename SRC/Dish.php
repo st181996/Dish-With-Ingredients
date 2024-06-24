@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace App;
 
-use DateTimeImmutable;
-use DateTimeZone;
-
 /**
  * @see \App\DishTest
  */
@@ -57,14 +54,11 @@ class Dish
         return $this->likesData;
     }
 
-    public function getDeliveryTime(): DateTimeImmutable
+    public function getDishTime(): int
     {
-        $deliveryTime = new DateTimeImmutable('now', new DateTimeZone('Europe/Berlin'));
         $ingredientsCount = $this->ingredients->getIngredientsCount();
         $timeAccordingToIngredients = $ingredientsCount * 6;
-        $deliveryTime = $deliveryTime->modify('+' . $timeAccordingToIngredients . ' minutes');
-
-        return $deliveryTime;
+        return $timeAccordingToIngredients;
     }
     /*public function isSpicy(): bool
     {

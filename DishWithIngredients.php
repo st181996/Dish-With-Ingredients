@@ -6,6 +6,7 @@ error_reporting(E_ALL);
 use App\Dish;
 use App\Ingredients;
 use App\MysqlDishloader;
+use App\DeliveryTimeHandler;
 use BitAndBlack\SentenceConstruction;
 use Symfony\Component\Dotenv\Dotenv;
 
@@ -109,8 +110,8 @@ $dishes = $dishSelect->getDataFromTable();
                     </td>
                     <td>
                         <?php 
-                            $deliveryTime = $dish->getDeliveryTime(); 
-                            $deliveryTime = $deliveryTime->format("H:i");
+                            $deliveryTime = new DeliveryTimeHandler($dish);
+                            $deliveryTime = $deliveryTime->getClosingTime();                        
                             echo $deliveryTime;
                         ?>
                     </td>
