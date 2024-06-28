@@ -14,18 +14,20 @@ class DeliveryTimeHandler
 {
     private DateTimeImmutable $day;
 
-    public function __construct(private readonly Dish $dish, DateTimeImmutable $day = null)
-    {
+    public function __construct(
+        private readonly Dish $dish,
+        DateTimeImmutable $day = null
+    ) {
         $this->day = $day ?? new DateTimeImmutable('now', new DateTimeZone('Europe/Berlin'));
     }
 
-    public function getClosingTime(): string
+    public function getClosingTime(): DateTimeImmutable
     {
         $timeAccordingToIngredients = $this->dish->getDishTime();
 
         $deliveryTime = $this->day->modify('+' . $timeAccordingToIngredients . ' minutes');
 
-        $deliveryTime = $deliveryTime->format("H:i");
+        $timeToCompare = $deliveryTime->format("H:i");
 
         $day = $this->day;
 
@@ -34,11 +36,10 @@ class DeliveryTimeHandler
         $closingTime = strtotime("20:00");
         $closingTime = date("H:i", $closingTime);
 
-        if ($deliveryTime < $closingTime && "Sunday" !== $day) {
-        } elseif ($deliveryTime > $closingTime && "Sunday" !== $day) {
-            $deliveryTime = "The resturant is closed. Pre-order now and get it by 11:00am in the morning.";
+        if ($timeToCompare > $closingTime) {
+            $deliveryTime = new DateTimeImmutable("00:00");
         } elseif ("Sunday" == $day) {
-            $deliveryTime = $deliveryTime . "<br>" . "The order can take 30 more minutes due to weekend.";
+            $deliveryTime = $deliveryTime->modify('+30 minutes');
         }
         return $deliveryTime;
     }

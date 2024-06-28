@@ -110,9 +110,15 @@ $dishes = $dishSelect->getDataFromTable();
                     </td>
                     <td>
                         <?php 
+                            $day = new DateTimeImmutable('now', new DateTimeZone('Europe/Berlin'));
                             $deliveryTime = new DeliveryTimeHandler($dish);
-                            $deliveryTime = $deliveryTime->getClosingTime();                        
-                            echo $deliveryTime;
+                            $deliveryTime = $deliveryTime->getClosingTime(); 
+                            $deliveryTime = $deliveryTime->format("H:i");
+                            if ($deliveryTime !== "00:00") {
+                                echo $deliveryTime;
+                            }else {
+                                echo "The resturant is closed. Pre-order now and get it by 11:00am in the morning";
+                            }                      
                         ?>
                     </td>
                 </tr>
