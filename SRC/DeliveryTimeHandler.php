@@ -12,7 +12,7 @@ use DateTimeZone;
  */
 class DeliveryTimeHandler
 {
-    private DateTimeImmutable $day;
+    private readonly DateTimeImmutable $day;
 
     public function __construct(
         private readonly Dish $dish,
@@ -21,7 +21,7 @@ class DeliveryTimeHandler
         $this->day = $day ?? new DateTimeImmutable('now', new DateTimeZone('Europe/Berlin'));
     }
 
-    public function getClosingTime(): DateTimeImmutable
+    public function getClosingTime(): ?DateTimeImmutable 
     {
         $timeAccordingToIngredients = $this->dish->getDishTime();
 
@@ -29,15 +29,13 @@ class DeliveryTimeHandler
 
         $timeToCompare = $deliveryTime->format("H:i");
 
-        $day = $this->day;
-
-        $day = $day->format("l");
+        $day = $this->day->format("l");
 
         $closingTime = strtotime("20:00");
         $closingTime = date("H:i", $closingTime);
 
         if ($timeToCompare > $closingTime) {
-            $deliveryTime = new DateTimeImmutable("00:00");
+            $deliveryTime = null;
         } elseif ("Sunday" == $day) {
             $deliveryTime = $deliveryTime->modify('+30 minutes');
         }

@@ -18,17 +18,6 @@ $dotenv->load(__DIR__.'/.env');
 $date = new DateTimeImmutable('now', new DateTimeZone('Europe/Berlin'));
 echo $date->format('Y-m-d H:i');
 
-/*$ingredientA = new Ingredients("Spaghetti Pasta","Eggs","Pancetta","Parmesan Cheese","Blck Pepper","Olive Oil","Garlic","Parsley for garnish");
-$ingredientB = new Ingredients("Chicken Breast","Soy Sauce","Garlic","Ginger","Onion","Sesame Oil","Cornstarch","Chilli","Rice for serving");
-$ingredientC = new Ingredients("Fresh Tomatoes","Fresh Mozzarella Cheese","Fresh Basel Leaves","Balsamic Vinegar","Extra Virgin Olive Oil","Salt","Pepper");
-
-$dishes = array(
-     new Dish("Spaghetti Carbonara","Deep Red", 7, $ingredientA),
-     new Dish("Chicken Stir-Fry","Rich Yellow", 5.2, $ingredientB),
-     new Dish("Caprese Salad","Green and White", 6, $ingredientC),
-);*/
-
-
 $dishSelect = new MysqlDishloader($_ENV["DB_HOST"], $_ENV["DB_USER"], $_ENV["DB_PASSWORD"], $_ENV["DB_DB"]);
 $dishes = $dishSelect->getDataFromTable();
 //dump($dishes);
@@ -110,15 +99,15 @@ $dishes = $dishSelect->getDataFromTable();
                     </td>
                     <td>
                         <?php 
-                            $day = new DateTimeImmutable('now', new DateTimeZone('Europe/Berlin'));
                             $deliveryTime = new DeliveryTimeHandler($dish);
                             $deliveryTime = $deliveryTime->getClosingTime(); 
                             $deliveryTime = $deliveryTime->format("H:i");
-                            if ($deliveryTime !== "00:00") {
-                                echo $deliveryTime;
-                            }else {
-                                echo "The resturant is closed. Pre-order now and get it by 11:00am in the morning";
-                            }                      
+                            
+                            echo $deliveryTime !== null 
+                            	? $deliveryTime 
+                            	: "The resturant is closed. Pre-order now and get it by 11:00am in the morning"
+                            ;
+                                             
                         ?>
                     </td>
                 </tr>
